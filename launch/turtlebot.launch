@@ -7,12 +7,12 @@
 	<arg name="stacks"     value="$(optenv TURTLEBOT_STACKS hexagons)"/>  <!-- circles, hexagons -->
 	<arg name="3d_sensor"  value="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
 
-	<!-- Difine chama o mundo vazio e inclue uma casa -->
+	<!-- Chama o mundo vazio e inclue uma casa -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="use_sim_time" value="true"/>
 		<arg name="debug" value="false"/>
 		<arg name="gui" value="$(arg gui)" />
-		<arg name="world_name" value="$(find turtlebot_laccan)/world/house.world"/>
+		<arg name="world_name" value="$(find turtlebot_laccan)/world/circuit.world"/>
 	</include>
 
 	<include file="$(find turtlebot_laccan)/launch/includes/$(arg base).launch.xml">
@@ -20,6 +20,7 @@
 		<arg name="stacks" value="$(arg stacks)"/>
 		<arg name="3d_sensor" value="$(arg 3d_sensor)"/>
 	</include>
+
 	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
 		<param name="publish_frequency" type="double" value="30.0" />
 	</node>
@@ -34,8 +35,5 @@
 		<remap from="image" to="/camera/depth/image_raw"/>
 		<remap from="scan" to="/scan"/>
 	</node>
-
- 	 <arg name="custom_gmapping_launch_file" default="$(find turtlebot_navigation)/launch/includes/gmapping/$(arg 3d_sensor)_gmapping.launch.xml"/>
-  	<include file="$(arg custom_gmapping_launch_file)"/>
 
 </launch>

@@ -19,7 +19,7 @@ cd ~/catkin_ws
 3. Use wstool to install the packages
 
 ```
-wstool init src https://raw.githubusercontent.com/nfopma/turtlebot_laccan/master/turtlebot_exploration.rosinstall
+wstool init src https://raw.githubusercontent.com/alanexplorer/turtlebot_laccan/kinetic-devel/turtlebot_exploration.rosinstall
 ```
 
 4. Compile and source the workspace
